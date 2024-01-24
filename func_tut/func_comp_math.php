@@ -27,7 +27,7 @@ $g = (fn(int $x) => $x + 3);
 $h = (fn(int $x) => $x - 5);
 
 # Function as Composition
-$compose = fn(callable $f, callable $g) => fn($x) => $f($g($x));
+$compose = fn(callable $a, callable $b) => fn($x) => $a($b($x));
 
 // Composing the functions
 $f_g = $compose($f, $g); // Represents f ∘ g
