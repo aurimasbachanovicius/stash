@@ -120,7 +120,7 @@ $result2 = double(5); // 10
 // ... doesn't matter how many times i'll cal double(x), it will always give the same result.
 ```
 
-# Recursion:
+# Recursion and Memoization:
 
 ```php
 function factorial($n) {
@@ -130,7 +130,21 @@ function factorial($n) {
     return $n * factorial($n - 1);
 }
 
-$result = factorial(5); // 120
+echo factorial(5); // 120
+
+function fibonacci($n, &$memo = array()) {
+    if ($n <= 1) {
+        return $n;
+    }
+
+    if (!isset($memo[$n])) {
+        $memo[$n] = fibonacci($n - 1, $memo) + fibonacci($n - 2, $memo);
+    }
+    return $memo[$n];
+}
+
+echo fibonacci(10); // Output: 55
+
 ```
 
 # Currying (arity):
